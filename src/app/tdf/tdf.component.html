@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="bg-primary p-2 text-centre text-white">
+                <h2>Template-driven forms</h2>
+            </div>
+            <form #newForm="ngForm" (ngSubmit)="save(newForm.value)">
+                <div class="form-group">
+                    <label for="name">Enter Name:</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Name" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="age">Enter Age:</label>
+                    <input type="number" name="age" class="form-control" placeholder="Enter Age" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="email">Enter Email:</label>
+                    <input type="text" name="email" class="form-control" placeholder="Enter Email" ngModel>
+                </div>
+                <br>
+                <div class="d-grid">
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<h1>{{data.name}}</h1>
+<h1>{{data.age}}</h1>
+<h1>{{data.email}}</h1>
