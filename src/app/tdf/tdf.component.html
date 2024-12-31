@@ -1,40 +1,75 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <div class="bg-primary p-2 text-centre text-white">
-                <h2>Template-driven forms</h2>
+            <div class="bg-primary p-2 text-center text-white">
+                <h2>Template-driven Forms</h2>
             </div>
-            <form #newForm="ngForm" (ngSubmit)="save(newForm.value)">
-                {{ newForm.value | json}}
+            <form #newForm="ngForm" (ngSubmit)="save(newForm.value)" novalidate>
+                {{ newForm.value | json }}
                 <br>
                 <br>
-                {{std | json}}
+                {{ std | json }} <!-- Display form model object -->
                 <br>
                 <br>
+
+                <!-- Name Input Field -->
                 <div class="form-group">
                     <label for="name">Enter Name:</label>
-                    <input type="text"  name="name" [(ngModel)]="std.name" class="form-control" placeholder="Enter Name"
-                        ngModel>
+                    <input type="text" [class.is-invalid]="name.touched && name.invalid" minlength="4" #name="ngModel"
+                        name="name" [(ngModel)]="std.name" class="form-control" placeholder="Enter Name" ngModel>
+                    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                        <div *ngIf="name.errors && name.errors['minlength']">
+                            4 Characters must required
+                        </div>
+                    </div>
+                    <!-- Dirty = {{ name.dirty }}
+                    <br>
+                    Pristine = {{ name.pristine }}
+                    <br>
+                    Valid = {{ name.valid }}
+                    <br>
+                    Invalid = {{ name.invalid }}
+                    <br>
+                    Touched = {{ name.touched }}
+                    <br>
+                    Untouched = {{ name.untouched }} -->
                 </div>
+
+                <!-- Age Input Field -->
                 <div class="form-group">
                     <label for="age">Enter Age:</label>
-                    <input type="number" name="age" [(ngModel)]="std.age" class="form-control" placeholder="Enter Age"
-                        ngModel>
+                    <input type="number" required #age="ngModel" [class.is-invalid]="age.touched && age.invalid"
+                        name="age" [(ngModel)]="std.age" class="form-control" placeholder="Enter Age" ngModel>
                 </div>
+
+                <!-- Email Input Field -->
                 <div class="form-group">
                     <label for="email">Enter Email:</label>
-                    <input type="text" name="email" [(ngModel)]="std.email" class=" form-control"
-                        placeholder="Enter Email" ngModel>
+                    <input type="text" #email="ngModel" [class.is-invalid]="email.touched && email.invalid" required
+                        email name="email" [(ngModel)]="std.email"
+                        class="form-control" placeholder="Enter Email" ngModel>
                 </div>
+
+                <!-- Error Message for Email -->
+                <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                    <div *ngIf="email.errors && email.errors['required']">
+                        Email is Required
+                    </div>
+                    <div *ngIf="email.errors && email.errors['email']">
+                        Invalid Email
+                    </div>
+                </div>
+
                 <br>
                 <div class="d-grid">
-                    <input type="submit" value="Submit" class="btn btn-primary">
+                    <input type="submit" [class.disabled]="newForm.form.invalid" value="Submit" class="btn btn-primary">
                 </div>
             </form>
-
         </div>
     </div>
 </div>
-<h1>{{data.name}}</h1>
-<h1>{{data.age}}</h1>
-<h1>{{data.email}}</h1>
+
+<!-- Display Submitted Data -->
+<h1>{{ std.name }}</h1>
+<h1>{{ std.age }}</h1>
+<h1>{{ std.email }}</h1>

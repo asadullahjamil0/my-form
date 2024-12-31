@@ -8,7 +8,7 @@ import { Student } from '../student';
 })
 export class TdfComponent {
   data: any;
-  std: any = new Student("junaid", 34, "junaid@483gamil.com")
+  std: any = new Student()
   save(formData: any) {
     // console.log(formData.value);
     // this.data = formData;
