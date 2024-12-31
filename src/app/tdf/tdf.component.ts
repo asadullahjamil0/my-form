@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Student } from '../student';
 
 @Component({
   selector: 'app-tdf',
@@ -7,9 +8,13 @@ import { Component } from '@angular/core';
 })
 export class TdfComponent {
   data: any;
+  std: any = new Student("junaid", 34, "junaid@483gamil.com")
   save(formData: any) {
     // console.log(formData.value);
-    this.data = formData;
+    // this.data = formData;
+    // const std = new Student(formData.name, formData.age, formData.email);
+    // console.log(std);
+    console.log(this.std);
   }
 
 }
