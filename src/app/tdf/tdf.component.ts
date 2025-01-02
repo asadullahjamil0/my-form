@@ -18,6 +18,21 @@ export class TdfComponent {
     // const std = new Student(formData.name, formData.age, formData.email);
     // console.log(std);
     console.log(this.std);
+    console.log(this.selectedHobbies)
+  }
+
+  selectedHobbies: string[] = [];
+  onChange(e: any) {
+    let selectedvalue = e.target.value;
+    let checked = e.target.checked;
+    // console.log(e.target.value, e.target.checked);
+    if (checked) {
+      this.selectedHobbies.push(selectedvalue);
+    }
+    else {
+      let index = this.selectedHobbies.indexOf(e.target.value);
+      this.selectedHobbies.splice(index, 1);
+    }
   }
 
 }

@@ -7,7 +7,8 @@ export class Student {
         public age?: number,
         public email?: string,
         public gender?: string,
-        public country?: string
+        public country?: string,
+        public accept?: boolean
     ) {
 
     }
