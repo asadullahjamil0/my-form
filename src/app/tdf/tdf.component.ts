@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Student } from '../student';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-tdf',
@@ -33,6 +34,10 @@ export class TdfComponent {
       let index = this.selectedHobbies.indexOf(e.target.value);
       this.selectedHobbies.splice(index, 1);
     }
+  }
+
+  resetForm(removeData: NgForm) {
+    removeData.resetForm();
   }
 
 }

@@ -98,21 +98,24 @@
                 <br>
                 <label for="">Select Hobbies</label>
                 <div class="form-check">
-                    <input type="checkbox" (change)="onChange($event)" class="form-check-input" name="hobbies"
+                    <input type="checkbox" ngModel (change)="onChange($event)" class="form-check-input" name="hobbies"
                         value="Singing" id="">
                     <label for="">Singing</label>
                     <br>
-                    <input type="checkbox" (change)="onChange($event)" class="form-check-input" name="hobbies"
+                    <input type="checkbox" ngModel (change)="onChange($event)" class="form-check-input" name="hobbies"
                         value="Reading" id="">
                     <label for="">Reading</label>
                     <br>
-                    <input type="checkbox" (change)="onChange($event)" class="form-check-input" name="hobbies"
+                    <input type="checkbox" ngModel (change)="onChange($event)" class="form-check-input" name="hobbies"
                         value="Hiking" id="">
                     <label for="">Hiking</label>
                 </div>
                 <br>
                 <div class="d-grid">
-                    <input type="submit" [class.disabled]="newForm.form.invalid || selectedHobbies.length == 0" value="Submit" class="btn btn-primary">
+                    <input type="submit" [class.disabled]="newForm.form.invalid || selectedHobbies.length == 0"
+                        value="Submit" class="btn btn-primary">
+                    <br>
+                    <button type="button" class="btn btn-danger" (click)="resetForm(newForm)">Reset Form</button>
                 </div>
             </form>
         </div>
